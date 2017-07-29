@@ -5,8 +5,12 @@ using UnityEngine.UI;
 
 public class ScoreKeeper : MonoBehaviour {
 
-  public Text scoreText;
+  public Text energyText;
   public Text levelText;
+  public Text scoreText;
+  public Text pressRateText;
+
+  public Transform powerupTracker;
 
   // energy-related variables
   private int energyPerPress;
@@ -17,16 +21,20 @@ public class ScoreKeeper : MonoBehaviour {
   private int nextLevelRequirement;
   private int minimumEnergy;
 
+  private int points;
+
 	// Use this for initialization
 	void Start () {
     // default values
     currentEnergy = 0;
-    energyPerPress = 8;
-    energyDrain = 2;
+    energyPerPress = 10;
+    energyDrain = 3;
 
     currentLevel = 0;
     nextLevelRequirement = 500;
     minimumEnergy = 0;
+
+    points = 0;
 
     // start energy drain
     InvokeRepeating("EnergyDrain", 0.0f, 0.1f);
@@ -35,8 +43,10 @@ public class ScoreKeeper : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
   {
-    scoreText.GetComponent<Text>().text = currentEnergy.ToString();
+    energyText.GetComponent<Text>().text = (currentEnergy - minimumEnergy).ToString() + "/" + (nextLevelRequirement - minimumEnergy).ToString();
     levelText.GetComponent<Text>().text = currentLevel.ToString();
+    scoreText.GetComponent<Text>().text = points.ToString();
+    pressRateText.GetComponent<Text>().text = energyPerPress.ToString() + "/press";
 
     // if the next energy level is reached, increase level
     if (currentEnergy >= nextLevelRequirement)
@@ -71,6 +81,11 @@ public class ScoreKeeper : MonoBehaviour {
     return currentLevel;
   }
 
+  public int getPoints()
+  {
+    return points;
+  }
+
   //SETTERS
   public void setEnergyPerPress(int epp)
   {
@@ -82,10 +97,16 @@ public class ScoreKeeper : MonoBehaviour {
     currentEnergy = ce;
   }
 
+  public void setPoints(int p)
+  {
+    points = p;
+  }
+
   // Handle spacebar presses
   public void PressSpace()
   {
     currentEnergy = currentEnergy + energyPerPress;
+    points++;
   }
 
   // Handle energy drain
@@ -99,7 +120,6 @@ public class ScoreKeeper : MonoBehaviour {
   private void NextLevel()
   {
     currentLevel++; // increase level
-
 
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
     energyDrain += currentLevel; // increase energy drain
