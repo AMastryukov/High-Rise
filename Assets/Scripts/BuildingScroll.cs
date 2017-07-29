@@ -5,6 +5,7 @@ using UnityEngine;
 public class BuildingScroll : MonoBehaviour {
 
   public Transform scoreKeeper;
+  public Transform[] buildings = new Transform[4];
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +17,14 @@ public class BuildingScroll : MonoBehaviour {
     float yTransform = 
       (((float)scoreKeeper.GetComponent<ScoreKeeper>().getCurrentEnergy() -
       (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy()) /
-      (float)scoreKeeper.GetComponent<ScoreKeeper>().getNextLevelRequirement()) * 200.0f;
+      ((float)scoreKeeper.GetComponent<ScoreKeeper>().getNextLevelRequirement() -
+      (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy())) * 200.0f;
 
-    transform.position = new Vector2(0, -yTransform);
-	}
+    for (int i = 0; i < 4; i++)
+    {
+      buildings[i].transform.position = new Vector2(0, -yTransform - 
+        (200.0f * scoreKeeper.GetComponent<ScoreKeeper>().getCurrentLevel()) +
+        (200.0f * i));
+    }
+  }
 }

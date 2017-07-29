@@ -25,7 +25,7 @@ public class ScoreKeeper : MonoBehaviour {
     energyDrain = 1;
 
     currentLevel = 0;
-    nextLevelRequirement = 50;
+    nextLevelRequirement = 10;
     minimumEnergy = 0;
 
     // start energy drain
@@ -66,6 +66,11 @@ public class ScoreKeeper : MonoBehaviour {
     return nextLevelRequirement;
   }
 
+  public int getCurrentLevel()
+  {
+    return currentLevel;
+  }
+
   //SETTERS
   public void setEnergyPerPress(int epp)
   {
@@ -95,8 +100,7 @@ public class ScoreKeeper : MonoBehaviour {
   {
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
     nextLevelRequirement = nextLevelRequirement * 2; // increase next floor requirement
-
-    energyDrain++; // increase drainage
+    
     currentLevel++; // increase level
   }
 }
