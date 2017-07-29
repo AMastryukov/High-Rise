@@ -6,17 +6,27 @@ using UnityEngine.UI;
 public class ScoreKeeper : MonoBehaviour {
 
   public Text scoreText;
-  
+  public Text levelText;
+
+  // energy-related variables
   private int energyPerPress;
   private int currentEnergy;
-  private int drainPerSecond;
+  private int energyDrain;
+
+  private int currentLevel;
+  private int nextLevelRequirement;
+  private int minimumEnergy;
 
 	// Use this for initialization
 	void Start () {
     // default values
     currentEnergy = 0;
     energyPerPress = 1;
-    drainPerSecond = 2;
+    energyDrain = 1;
+
+    currentLevel = 0;
+    nextLevelRequirement = 50;
+    minimumEnergy = 0;
 
     // start energy drain
     InvokeRepeating("EnergyDrain", 0.0f, 0.5f);
@@ -26,6 +36,13 @@ public class ScoreKeeper : MonoBehaviour {
 	void Update ()
   {
     scoreText.GetComponent<Text>().text = currentEnergy.ToString();
+    levelText.GetComponent<Text>().text = currentLevel.ToString();
+
+    // if the next energy level is reached, increase level
+    if (currentEnergy >= nextLevelRequirement)
+    {
+      NextLevel();
+    }
 	}
 
   // GETTERS
@@ -37,6 +54,16 @@ public class ScoreKeeper : MonoBehaviour {
   public int getCurrentEnergy()
   {
     return currentEnergy;
+  }
+
+  public int getMinimumEnergy()
+  {
+    return minimumEnergy;
+  }
+
+  public int getNextLevelRequirement()
+  {
+    return nextLevelRequirement;
   }
 
   //SETTERS
@@ -59,7 +86,17 @@ public class ScoreKeeper : MonoBehaviour {
   // Handle energy drain
   public void EnergyDrain()
   {
-    currentEnergy = currentEnergy - drainPerSecond / 2;
-    if (currentEnergy < 0) { currentEnergy = 0; }
+    currentEnergy = currentEnergy - energyDrain;
+    if (currentEnergy < minimumEnergy) { currentEnergy = minimumEnergy; }
+  }
+
+  // increase energy level requirements for next level
+  private void NextLevel()
+  {
+    minimumEnergy = nextLevelRequirement; // increase minimum energy level
+    nextLevelRequirement = nextLevelRequirement * 2; // increase next floor requirement
+
+    energyDrain++; // increase drainage
+    currentLevel++; // increase level
   }
 }
