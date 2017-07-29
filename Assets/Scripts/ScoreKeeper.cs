@@ -21,15 +21,15 @@ public class ScoreKeeper : MonoBehaviour {
 	void Start () {
     // default values
     currentEnergy = 0;
-    energyPerPress = 1;
+    energyPerPress = 10;
     energyDrain = 1;
 
     currentLevel = 0;
-    nextLevelRequirement = 10;
+    nextLevelRequirement = 100;
     minimumEnergy = 0;
 
     // start energy drain
-    InvokeRepeating("EnergyDrain", 0.0f, 0.5f);
+    InvokeRepeating("EnergyDrain", 0.0f, 0.2f);
 	}
 	
 	// Update is called once per frame
@@ -99,7 +99,7 @@ public class ScoreKeeper : MonoBehaviour {
   private void NextLevel()
   {
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
-    nextLevelRequirement = nextLevelRequirement * 2; // increase next floor requirement
+    nextLevelRequirement = nextLevelRequirement + 100; // increase next floor requirement
     
     currentLevel++; // increase level
   }

@@ -239,11 +239,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752459552172838, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1168606827727034, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_Name
-      value: Building Floor
+      value: Building Floor 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc41846116ada304c94ce9029a069360, type: 2}
@@ -347,11 +347,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752459552172838, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1168606827727034, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_Name
-      value: Building Floor
+      value: Building Floor 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc41846116ada304c94ce9029a069360, type: 2}
@@ -535,10 +535,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 311630739}
-  - {fileID: 1693915203}
-  - {fileID: 1733642261}
   - {fileID: 1316627595}
+  - {fileID: 1733642261}
+  - {fileID: 1693915203}
+  - {fileID: 311630739}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -554,6 +554,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreKeeper: {fileID: 1889623485}
+  buildings:
+  - {fileID: 311630739}
+  - {fileID: 1693915203}
+  - {fileID: 1733642261}
+  - {fileID: 1316627595}
 --- !u!1 &1603495905
 GameObject:
   m_ObjectHideFlags: 0
@@ -761,11 +766,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752459552172838, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1168606827727034, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_Name
-      value: Building Floor
+      value: Building Floor 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4826062112892262, guid: dc41846116ada304c94ce9029a069360, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc41846116ada304c94ce9029a069360, type: 2}
@@ -817,11 +826,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4752459552172838, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1168606827727034, guid: dc41846116ada304c94ce9029a069360, type: 2}
       propertyPath: m_Name
-      value: Building Floor
+      value: Building Floor 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dc41846116ada304c94ce9029a069360, type: 2}
