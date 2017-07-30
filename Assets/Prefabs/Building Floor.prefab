@@ -19,6 +19,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4752459552172838}
+  - component: {fileID: 114532500984783974}
   m_Layer: 0
   m_Name: Building Floor
   m_TagString: Untagged
@@ -78,7 +79,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1168606827727034}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -789.34033, y: -102.72436, z: 0}
+  m_LocalPosition: {x: -555.8267, y: -29.331451, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4826062112892262}
@@ -99,6 +100,27 @@ Transform:
   m_Father: {fileID: 4752459552172838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114532500984783974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1168606827727034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22f02e62c8cd602498b1636545ffc85e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indoorSprite: {fileID: 4516187431359682}
+  windowSprites:
+  - {fileID: 21300000, guid: 7dad55474b129bf458f422ab2159a510, type: 3}
+  - {fileID: 21300000, guid: 12000368bc25f17408b5b53f016de8ff, type: 3}
+  - {fileID: 21300000, guid: 5fd4b5ec404d2e34bb12f486962d4870, type: 3}
+  - {fileID: 21300000, guid: 136196a0e7a951d44b00e5aa22724a03, type: 3}
+  - {fileID: 21300000, guid: 355e9f9a25fe09c44bbff8123084b306, type: 3}
+  - {fileID: 21300000, guid: 7b63b7a4f07c0c24293d893dafd5ea35, type: 3}
+  - {fileID: 21300000, guid: 72c74fddc7f76da4f8187603c1c01f70, type: 3}
+  - {fileID: 21300000, guid: 63902eca6845a024893e89aa093e825c, type: 3}
 --- !u!212 &212078839737937852
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -181,5 +203,5 @@ SpriteRenderer:
   m_Size: {x: 6, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0

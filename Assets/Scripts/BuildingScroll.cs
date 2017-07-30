@@ -24,7 +24,7 @@ public class BuildingScroll : MonoBehaviour {
       (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy()));
 
     // transform based on how far along into the level the player is
-    float yTransform = -(percentageComplete * 200.0f + 175.0f);
+    float yTransform = -(percentageComplete * 200.0f + 200.0f);
 
     // update the color of the windows
     for (int i = 0; i < 2; i++)
@@ -34,7 +34,7 @@ public class BuildingScroll : MonoBehaviour {
     }
 
     buildings[2].GetChild(1).GetComponent<SpriteRenderer>().color = 
-      new Color(percentageComplete, percentageComplete, percentageComplete);
+      new Color(Mathf.Pow(percentageComplete, 2), Mathf.Pow(percentageComplete, 2), Mathf.Pow(percentageComplete, 2));
     
     for (int i = 3; i < 5; i++)
     {

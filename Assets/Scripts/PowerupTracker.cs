@@ -25,8 +25,8 @@ public class PowerupTracker : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
     autoClickerCountText.GetComponent<Text>().text = "Workers:\n" + autoClickerCount.ToString();
-    buyBoostText.GetComponent<Text>().text = "Buy Boost [" + boostCost.ToString() + "]";
-    buyClickerText.GetComponent<Text>().text = "Hire Worker [" + autoClickerCost.ToString() + "]";
+    buyBoostText.GetComponent<Text>().text = "Buy Boost [$" + boostCost.ToString() + "]";
+    buyClickerText.GetComponent<Text>().text = "Hire Worker [$" + autoClickerCost.ToString() + "]";
   }
 
   public void PurchaseAutoClicker()

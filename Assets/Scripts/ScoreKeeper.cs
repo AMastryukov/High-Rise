@@ -32,13 +32,13 @@ public class ScoreKeeper : MonoBehaviour {
     energyDrain = 0;
 
     currentLevel = 0;
-    nextLevelRequirement = 20;
+    nextLevelRequirement = 10;
     minimumEnergy = 0;
 
     points = 0;
 
     // start energy drain
-    InvokeRepeating("EnergyDrain", 0.0f, 0.3f);
+    InvokeRepeating("EnergyDrain", 0.0f, 0.1f);
 	}
 	
 	// Update is called once per frame
@@ -124,11 +124,12 @@ public class ScoreKeeper : MonoBehaviour {
 
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
 
-    if (currentLevel % 2 == 0)
+    if (currentLevel % 5 == 0)
     {
-      energyDrain++; // increase energy drain
+      energyDrain++; // increase energy drain every 5 floors
     }
-    nextLevelRequirement += 10 * (currentLevel + 1); // increase next floor requirement
+
+    nextLevelRequirement += 5 * (currentLevel + 1); // increase next floor requirement
 
     // update the building scroll
     buildingScroll.GetComponent<BuildingScroll>().SwapBuildings();
