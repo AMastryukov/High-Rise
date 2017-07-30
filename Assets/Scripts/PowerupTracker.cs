@@ -14,8 +14,8 @@ public class PowerupTracker : MonoBehaviour {
   private int autoClickerCount = 0;
   private int boostCount = 0;
 
-  private int autoClickerCost = 50;
-  private int boostCost = 100;
+  private int autoClickerCost = 10;
+  private int boostCost = 25;
 
 	// Use this for initialization
 	void Start () {
@@ -24,9 +24,9 @@ public class PowerupTracker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-    autoClickerCountText.GetComponent<Text>().text = "Clickers: " + autoClickerCount.ToString();
-    buyBoostText.GetComponent<Text>().text = "Buy Boost (" + boostCost.ToString() + " pwr)";
-    buyClickerText.GetComponent<Text>().text = "Buy Clicker (" + autoClickerCost.ToString() + " pwr)";
+    autoClickerCountText.GetComponent<Text>().text = "Workers:\n" + autoClickerCount.ToString();
+    buyBoostText.GetComponent<Text>().text = "Buy Boost [" + boostCost.ToString() + "]";
+    buyClickerText.GetComponent<Text>().text = "Hire Worker [" + autoClickerCost.ToString() + "]";
   }
 
   public void PurchaseAutoClicker()

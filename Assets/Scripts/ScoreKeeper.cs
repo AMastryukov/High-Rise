@@ -31,7 +31,7 @@ public class ScoreKeeper : MonoBehaviour {
     energyDrain = 3;
 
     currentLevel = 0;
-    nextLevelRequirement = 500;
+    nextLevelRequirement = 100;
     minimumEnergy = 0;
 
     points = 0;
@@ -46,7 +46,7 @@ public class ScoreKeeper : MonoBehaviour {
     energyText.GetComponent<Text>().text = (currentEnergy - minimumEnergy).ToString() + "/" + (nextLevelRequirement - minimumEnergy).ToString();
     levelText.GetComponent<Text>().text = currentLevel.ToString();
     scoreText.GetComponent<Text>().text = points.ToString();
-    pressRateText.GetComponent<Text>().text = energyPerPress.ToString() + "/press";
+    pressRateText.GetComponent<Text>().text = "Power/press:\n" + energyPerPress.ToString();
 
     // if the next energy level is reached, increase level
     if (currentEnergy >= nextLevelRequirement)
@@ -123,6 +123,6 @@ public class ScoreKeeper : MonoBehaviour {
 
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
     energyDrain += currentLevel; // increase energy drain
-    nextLevelRequirement += 500 * (currentLevel + 1); // increase next floor requirement
+    nextLevelRequirement += 100 * (currentLevel + 1); // increase next floor requirement
   }
 }

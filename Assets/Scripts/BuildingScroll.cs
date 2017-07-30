@@ -16,22 +16,40 @@ public class BuildingScroll : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-    // transform based on how far along into the level the player is
-    float yTransform = 
+    // how far the player is to powering the next floor
+    float percentageComplete = 
       (((float)scoreKeeper.GetComponent<ScoreKeeper>().getCurrentEnergy() -
       (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy()) /
       ((float)scoreKeeper.GetComponent<ScoreKeeper>().getNextLevelRequirement() -
-      (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy())) * 200.0f;
+      (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy()));
+
+    Debug.Log(percentageComplete);
+
+    // transform based on how far along into the level the player is
+    float yTransform = -(percentageComplete * 200.0f + 125.0f);
+
+    // update the color of the windows
+    buildings[0].GetChild(1).GetComponent<SpriteRenderer>().color =
+      new Color(1.0f, 1.0f, 1.0f);
+
+    buildings[1].GetChild(1).GetComponent<SpriteRenderer>().color = 
+      new Color(percentageComplete, percentageComplete, percentageComplete);
+
+    for (int i = 2; i < 4; i++)
+    {
+      buildings[i].GetChild(1).GetComponent<SpriteRenderer>().color =
+      new Color(0.0f, 0.0f, 0.0f);
+    }
 
     // update position of every building
     for (int i = 0; i < 4; i++)
     {
-      buildings[i].transform.position = new Vector2(0, -yTransform - 
+      buildings[i].transform.position = new Vector2(150, yTransform - 
         (200.0f * scoreKeeper.GetComponent<ScoreKeeper>().getCurrentLevel()) +
         (200.0f * i) +
         (200.0f * swaps));
 
-      if (buildings[i].transform.position.y <= -400)
+      if (buildings[i].transform.position.y <= -325)
       {
         SwapBuildings();
       }
