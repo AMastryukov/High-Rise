@@ -36,7 +36,7 @@ public class PowerupTracker : MonoBehaviour {
     {
       autoClickerCount++;
       scoreKeeper.GetComponent<ScoreKeeper>().setPoints(scoreKeeper.GetComponent<ScoreKeeper>().getPoints() - autoClickerCost);
-      autoClickerCost += autoClickerCost;
+      autoClickerCost += autoClickerCost / 2;
 
       // invoke a repeating autoclicker
       InvokeRepeating("AutoClick", 0.0f, 1.0f);
@@ -51,7 +51,7 @@ public class PowerupTracker : MonoBehaviour {
       boostCount++;
       scoreKeeper.GetComponent<ScoreKeeper>().setEnergyPerPress(scoreKeeper.GetComponent<ScoreKeeper>().getEnergyPerPress() + 1 * boostCount);
       scoreKeeper.GetComponent<ScoreKeeper>().setPoints(scoreKeeper.GetComponent<ScoreKeeper>().getPoints() - boostCost);
-      boostCost += boostCost;
+      boostCost += boostCost / 2;
     }
   }
 

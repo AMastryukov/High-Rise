@@ -11,6 +11,7 @@ public class ScoreKeeper : MonoBehaviour {
   public Text pressRateText;
 
   public Transform powerupTracker;
+  public Transform buildingScroll;
 
   // energy-related variables
   private int energyPerPress;
@@ -27,17 +28,17 @@ public class ScoreKeeper : MonoBehaviour {
 	void Start () {
     // default values
     currentEnergy = 0;
-    energyPerPress = 10;
-    energyDrain = 3;
+    energyPerPress = 5;
+    energyDrain = 0;
 
     currentLevel = 0;
-    nextLevelRequirement = 100;
+    nextLevelRequirement = 20;
     minimumEnergy = 0;
 
     points = 0;
 
     // start energy drain
-    InvokeRepeating("EnergyDrain", 0.0f, 0.1f);
+    InvokeRepeating("EnergyDrain", 0.0f, 0.3f);
 	}
 	
 	// Update is called once per frame
@@ -122,7 +123,14 @@ public class ScoreKeeper : MonoBehaviour {
     currentLevel++; // increase level
 
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
-    energyDrain += currentLevel; // increase energy drain
-    nextLevelRequirement += 100 * (currentLevel + 1); // increase next floor requirement
+
+    if (currentLevel % 2 == 0)
+    {
+      energyDrain++; // increase energy drain
+    }
+    nextLevelRequirement += 10 * (currentLevel + 1); // increase next floor requirement
+
+    // update the building scroll
+    buildingScroll.GetComponent<BuildingScroll>().SwapBuildings();
   }
 }
