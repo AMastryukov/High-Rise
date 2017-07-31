@@ -76,6 +76,7 @@ public class BuildingScroll : MonoBehaviour {
     // put the last building at the top
     buildings[4] = tempBuilding;
     buildings[4].position = new Vector2(100, 800);
+    buildings[4].GetComponent<IndoorWindows>().randomizeWindowSprite();
 
     swaps++;
   }

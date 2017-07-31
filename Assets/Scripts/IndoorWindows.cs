@@ -19,6 +19,7 @@ public class IndoorWindows : MonoBehaviour {
 
   public void randomizeWindowSprite()
   {
-    indoorSprite.GetComponent<SpriteRenderer>().sprite = windowSprites[Random.Range(0,8)];
+    int spriteIndex = Random.Range(0, 8);
+    indoorSprite.GetComponent<SpriteRenderer>().sprite = windowSprites[spriteIndex];
   }
 }
