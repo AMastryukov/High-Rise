@@ -39,11 +39,11 @@ public class BackgroundScroll : MonoBehaviour {
         skyVariants[i].transform.position,
         targetPosition,
         ref velocity,
-        0.2f);
+        0.1f);
     }
 
     // move the skyline down as well
-    if (skyline.transform.position.y > -300)
+    if (skyline.transform.position.y > -400)
     {
       // target position
       Vector3 targetPosition = new Vector3(
@@ -60,7 +60,7 @@ public class BackgroundScroll : MonoBehaviour {
         skyline.transform.position,
         targetPosition,
         ref velocity,
-        0.2f);
+        0.1f);
     }
 
     // shift the bottom sky to the top

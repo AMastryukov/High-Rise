@@ -9,6 +9,8 @@ public class ScoreKeeper : MonoBehaviour {
   public Text levelText;
   public Text scoreText;
   public Text pressRateText;
+  public Text drainRateText;
+  public Text presserPressRateText;
 
   public Transform powerupTracker;
   public Transform buildingScroll;
@@ -17,6 +19,7 @@ public class ScoreKeeper : MonoBehaviour {
   private int energyPerPress;
   private int currentEnergy;
   private int energyDrain;
+  private int workerEnergyPerPress;
 
   private int currentLevel;
   private int nextLevelRequirement;
@@ -28,26 +31,30 @@ public class ScoreKeeper : MonoBehaviour {
 	void Start () {
     // default values
     currentEnergy = 0;
-    energyPerPress = 5;
+    energyPerPress = 1;
     energyDrain = 0;
+    workerEnergyPerPress = 1;
 
     currentLevel = 0;
-    nextLevelRequirement = 10;
+    nextLevelRequirement = 2;
     minimumEnergy = 0;
 
     points = 0;
 
     // start energy drain
-    InvokeRepeating("EnergyDrain", 0.0f, 0.1f);
+    InvokeRepeating("EnergyDrain", 0.0f, 1.0f);
 	}
 	
 	// Update is called once per frame
 	void Update ()
   {
     energyText.GetComponent<Text>().text = (currentEnergy - minimumEnergy).ToString() + "/" + (nextLevelRequirement - minimumEnergy).ToString();
-    levelText.GetComponent<Text>().text = currentLevel.ToString();
+    levelText.GetComponent<Text>().text = currentLevel.ToString() + " (" + (currentLevel * 3).ToString() + "m)";
     scoreText.GetComponent<Text>().text = points.ToString();
-    pressRateText.GetComponent<Text>().text = "Power/press:\n" + energyPerPress.ToString();
+
+    presserPressRateText.GetComponent<Text>().text = "Presser P/p: " + workerEnergyPerPress.ToString();
+    pressRateText.GetComponent<Text>().text = "PWR/press: " + energyPerPress.ToString();
+    drainRateText.GetComponent<Text>().text = "Decay/sec: " + energyDrain.ToString();
 
     // if the next energy level is reached, increase level
     if (currentEnergy >= nextLevelRequirement)
@@ -110,6 +117,13 @@ public class ScoreKeeper : MonoBehaviour {
     points++;
   }
 
+  // handle WORKER/PRESSER spacebar presses
+  public void WorkerPressSpace()
+  {
+    currentEnergy = currentEnergy + workerEnergyPerPress;
+    points++;
+  }
+
   // Handle energy drain
   public void EnergyDrain()
   {
@@ -124,14 +138,19 @@ public class ScoreKeeper : MonoBehaviour {
 
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
 
-    if (currentLevel % 5 == 0)
+    if (currentLevel % 10 == 0)
     {
-      energyDrain++; // increase energy drain every 5 floors
+      energyDrain++; // increase energy drain every 10 floors
     }
 
-    nextLevelRequirement += 5 * (currentLevel + 1); // increase next floor requirement
+    nextLevelRequirement += currentLevel + 1; // increase next floor requirement
 
     // update the building scroll
     buildingScroll.GetComponent<BuildingScroll>().SwapBuildings();
+  }
+
+  public void increaseWorkerEnergyPerPress()
+  {
+    workerEnergyPerPress++;
   }
 }
