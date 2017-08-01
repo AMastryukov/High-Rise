@@ -64,7 +64,7 @@ public class BackgroundScroll : MonoBehaviour {
     }
 
     // shift the bottom sky to the top
-    if (skyVariants[0].position.y <= -300)
+    if (skyVariants[0].position.y <= -400)
     {
       SwapSky();
     }

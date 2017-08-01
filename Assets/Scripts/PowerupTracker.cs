@@ -103,7 +103,7 @@ public class PowerupTracker : MonoBehaviour {
     {
       workerBoostCost++;
       scoreKeeper.GetComponent<ScoreKeeper>().increaseWorkerEnergyPerPress();
-      workerBoostCost += 10 + boostCount;
+      workerBoostCost += 10 * boostCount;
     }
   }
 
