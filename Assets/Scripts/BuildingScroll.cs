@@ -25,7 +25,7 @@ public class BuildingScroll : MonoBehaviour {
       (float)scoreKeeper.GetComponent<ScoreKeeper>().getMinimumEnergy()));
 
     // transform based on how far along into the level the player is
-    float yTransform = -(percentageComplete * 200.0f + 200.0f);
+    float yTransform = -(percentageComplete * 200.0f + 250.0f);
 
     // update the color of the windows
     for (int i = 0; i < 2; i++)
@@ -54,7 +54,7 @@ public class BuildingScroll : MonoBehaviour {
 
       // velocity vector
       Vector3 velocity = Vector3.zero;
-
+      
       // SMOOTHLY update the position
       buildings[i].transform.position = Vector3.SmoothDamp(
         buildings[i].transform.position, 

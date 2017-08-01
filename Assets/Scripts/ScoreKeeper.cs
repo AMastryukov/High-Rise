@@ -31,7 +31,7 @@ public class ScoreKeeper : MonoBehaviour {
 	void Start () {
     // default values
     currentEnergy = 0;
-    energyPerPress = 5;
+    energyPerPress = 1;
     energyDrain = 0;
     workerEnergyPerPress = 1;
 
