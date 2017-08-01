@@ -101,9 +101,10 @@ public class PowerupTracker : MonoBehaviour {
     // if the player can afford the powerup, update values
     if (scoreKeeper.GetComponent<ScoreKeeper>().getPoints() >= workerBoostCost)
     {
-      workerBoostCost++;
+      workerBoostCount++;
       scoreKeeper.GetComponent<ScoreKeeper>().increaseWorkerEnergyPerPress();
-      workerBoostCost += 10 * boostCount;
+      scoreKeeper.GetComponent<ScoreKeeper>().setPoints(scoreKeeper.GetComponent<ScoreKeeper>().getPoints() - workerBoostCost);
+      workerBoostCost += 25 * workerBoostCount;
     }
   }
 
