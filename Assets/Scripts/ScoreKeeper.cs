@@ -31,7 +31,7 @@ public class ScoreKeeper : MonoBehaviour {
 	void Start () {
     // default values
     currentEnergy = 0;
-    energyPerPress = 1;
+    energyPerPress = 5;
     energyDrain = 0;
     workerEnergyPerPress = 1;
 
@@ -52,9 +52,9 @@ public class ScoreKeeper : MonoBehaviour {
     levelText.GetComponent<Text>().text = currentLevel.ToString() + " (" + (currentLevel * 3).ToString() + "m)";
     scoreText.GetComponent<Text>().text = points.ToString();
 
-    presserPressRateText.GetComponent<Text>().text = "Presser P/p: " + workerEnergyPerPress.ToString();
-    pressRateText.GetComponent<Text>().text = "PWR/press: " + energyPerPress.ToString();
-    drainRateText.GetComponent<Text>().text = "Decay/sec: " + energyDrain.ToString();
+    presserPressRateText.GetComponent<Text>().text = "Presser PWR/p: " + workerEnergyPerPress.ToString();
+    pressRateText.GetComponent<Text>().text = "Player PWR/p: " + energyPerPress.ToString();
+    drainRateText.GetComponent<Text>().text = "PWR Decay/sec: " + energyDrain.ToString();
 
     // if the next energy level is reached, increase level
     if (currentEnergy >= nextLevelRequirement)

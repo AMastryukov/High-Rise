@@ -8,10 +8,11 @@ public class BuildingScroll : MonoBehaviour {
   public Transform[] buildings = new Transform[5];
 
   int swaps = 0;
+  float xPos;
 
 	// Use this for initialization
 	void Start () {
-		
+    xPos = transform.position.x;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +47,7 @@ public class BuildingScroll : MonoBehaviour {
     for (int i = 0; i < 5; i++)
     {
       // target position
-      Vector3 targetPosition = new Vector3(100, yTransform -
+      Vector3 targetPosition = new Vector3(xPos, yTransform -
         (200.0f * scoreKeeper.GetComponent<ScoreKeeper>().getCurrentLevel()) +
         (200.0f * i) +
         (200.0f * swaps), 0);
@@ -75,7 +76,7 @@ public class BuildingScroll : MonoBehaviour {
 
     // put the last building at the top
     buildings[4] = tempBuilding;
-    buildings[4].position = new Vector2(100, 800);
+    buildings[4].position = new Vector2(xPos, buildings[3].position.y + 200.0f);
     buildings[4].GetComponent<IndoorWindows>().randomizeWindowSprite();
 
     swaps++;
