@@ -42,7 +42,7 @@ public class ScoreKeeper : MonoBehaviour {
     points = 0;
 
     // start energy drain
-    InvokeRepeating("EnergyDrain", 0.0f, 1.0f);
+    InvokeRepeating("EnergyDrain", 0.0f, 0.5f);
 	}
 	
 	// Update is called once per frame
@@ -54,7 +54,7 @@ public class ScoreKeeper : MonoBehaviour {
 
     presserPressRateText.GetComponent<Text>().text = "Presser PWR/p: " + workerEnergyPerPress.ToString();
     pressRateText.GetComponent<Text>().text = "Player PWR/p: " + energyPerPress.ToString();
-    drainRateText.GetComponent<Text>().text = "PWR Decay/sec: " + energyDrain.ToString();
+    drainRateText.GetComponent<Text>().text = "PWR Decay/sec: " + (energyDrain * 2).ToString();
 
     // if the next energy level is reached, increase level
     if (currentEnergy >= nextLevelRequirement)
@@ -138,15 +138,34 @@ public class ScoreKeeper : MonoBehaviour {
 
     minimumEnergy = nextLevelRequirement; // increase minimum energy level
 
-    if (currentLevel % 10 == 0)
+    if (currentLevel % 5 == 0)
     {
-      energyDrain++; // increase energy drain every 10 floors
+      energyDrain++; // increase energy drain every 5 floors
+    }
+
+    if (currentLevel % 5 == 0)
+    {
+      energyPerPress++; // increase energy per press every 5 floors
     }
 
     nextLevelRequirement += currentLevel + 1; // increase next floor requirement
 
     // update the building scroll
     buildingScroll.GetComponent<BuildingScroll>().SwapBuildings();
+
+    // update unlocks
+    switch(currentLevel)
+    {
+      case 10:
+        powerupTracker.GetComponent<PowerupTracker>().boostButton.gameObject.SetActive(true);
+        break;
+      case 30:
+        powerupTracker.GetComponent<PowerupTracker>().workerButton.gameObject.SetActive(true);
+        break;
+      case 55:
+        powerupTracker.GetComponent<PowerupTracker>().workerBoostButton.gameObject.SetActive(true);
+        break;
+    }
   }
 
   public void increaseWorkerEnergyPerPress()

@@ -19,6 +19,15 @@ public class SpacebarTutorial : MonoBehaviour {
     {
       tutorialProgress++;
       UpdateTutorialText();
+
+      gameObject.transform.localScale = new Vector3(2.35f, 2.35f, 2.35f);
+      gameObject.GetComponent<Image>().color = new Color(0.7f, 0.7f, 0.7f);
+    }
+
+    if (Input.GetKeyUp(KeyCode.Space))
+    {
+      gameObject.transform.localScale = new Vector3(2.4f, 2.4f, 2.4f);
+      gameObject.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f);
     }
   }
 
@@ -33,25 +42,10 @@ public class SpacebarTutorial : MonoBehaviour {
       case 2:
         spacebarText.GetComponent<Text>().text = "AND AGAIN!";
         break;
-      case 3:
-        spacebarText.GetComponent<Text>().text = "KEEP GOING!";
-        break;
-      case 4:
-        spacebarText.GetComponent<Text>().text = "KEEP GOING!";
-        break;
-      case 5:
-        spacebarText.GetComponent<Text>().text = "KEEP GOING!";
-        break;
       case 6:
         spacebarText.GetComponent<Text>().text = "KEEP GOING!";
         break;
-      case 7:
-        spacebarText.GetComponent<Text>().text = "KEEP GOING!";
-        break;
-      case 8:
-        spacebarText.GetComponent<Text>().text = "KEEP GOING!";
-        break;
-      case 9:
+      case 15:
         Destroy(gameObject);
         break;
     }

@@ -22,15 +22,17 @@ public class PowerupTracker : MonoBehaviour {
   private int autoClickerCount = 0;
   private int boostCount = 0;
 
-  private int autoClickerCost = 10;
-  private int boostCost = 20;
+  private int autoClickerCost = 25;
+  private int boostCost = 30;
 
   private int workerBoostCount = 0;
-  private int workerBoostCost = 50;
+  private int workerBoostCost = 75;
 
 	// Use this for initialization
 	void Start () {
-	  
+    boostButton.gameObject.SetActive(false);
+    workerButton.gameObject.SetActive(false);
+    workerBoostButton.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
